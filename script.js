@@ -25,6 +25,10 @@ function addFlightStrip() {
     const departureTimeInput = document.createElement('input');
     departureTimeInput.placeholder = 'Time of Departure';
 
+    // Add blur event listeners to save data on exit
+    aircraftNameInput.addEventListener('blur', saveStrips);
+    departureTimeInput.addEventListener('blur', saveStrips);
+
     // Create a remove button
     const removeButton = document.createElement('button');
     removeButton.className = 'remove-button';
@@ -78,6 +82,10 @@ function loadStrips() {
         const departureTimeInput = document.createElement('input');
         departureTimeInput.placeholder = 'Time of Departure';
         departureTimeInput.value = data.departureTime;
+
+        // Add blur event listeners to save data on exit
+        aircraftNameInput.addEventListener('blur', saveStrips);
+        departureTimeInput.addEventListener('blur', saveStrips);
 
         const removeButton = document.createElement('button');
         removeButton.className = 'remove-button';
