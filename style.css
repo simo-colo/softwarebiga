@@ -5,59 +5,17 @@ body {
     padding: 20px;
 }
 
-.top-bar {
-    display: flex;
-    align-items: center;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.logo {
-    height: 50px; /* Adjust as needed */
-    margin-right: 20px;
-}
-
-.info {
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-around;
-}
-
-.qnh, .rwy {
-    margin-right: 20px;
-}
-
-.next-flights {
-    width: 200px;
-}
-
-.next-flights h3 {
-    margin: 0;
-}
-
-.next-flights div {
-    background: white;
-    border-radius: 4px;
-    padding: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    max-height: 150px;
-    overflow-y: auto;
-}
-
 .container {
-    display: flex;
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
-.strips-container {
-    width: 65%;
-    margin-right: 20px; /* Space between sections */
-}
-
-.strips-container h1 {
-    display: none; /* Remove title */
+h1 {
+    text-align: center;
 }
 
 .strip {
@@ -65,10 +23,9 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    margin-bottom: 10px; /* Space between strips */
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #ffffff; /* Ensure each strip has a background */
 }
 
 .strip input {
