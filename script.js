@@ -133,7 +133,7 @@ function addNextFlight(input) {
 // Function to fetch the QNH value from the METAR
 async function fetchMETAR() {
     try {
-        const response = await fetch('https://www.aviatorjoe.net/go/wx/LIMC/');
+        const response = await fetch('https://metar-taf.com/it/LIMC');
         const text = await response.text();
         
         // Parse the response text to find the QNH
