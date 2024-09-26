@@ -132,6 +132,7 @@ function addNextFlight(input) {
 
 // Function to fetch the QNH value from the METAR
 async function fetchMETAR() {
+	document.getElementById('qnhValue').textContent = `Loading...`; // Update QNH display
     try {
         const response = await fetch('https://cors-anywhere.herokuapp.com/https://www.aviatorjoe.net/go/wx/LIMC/');
         const text = await response.text();
