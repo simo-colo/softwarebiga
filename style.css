@@ -48,16 +48,16 @@ body {
 }
 
 .container {
-    max-width: 600px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    display: flex;
 }
 
-h1 {
-    text-align: center;
+.strips-container {
+    width: 65%;
+    margin-right: 20px; /* Space between sections */
+}
+
+.strips-container h1 {
+    display: none; /* Remove title */
 }
 
 .strip {
@@ -65,9 +65,10 @@ h1 {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Space between strips */
     border: 1px solid #ccc;
     border-radius: 4px;
+    background-color: #ffffff; /* Ensure each strip has a background */
 }
 
 .strip input {
