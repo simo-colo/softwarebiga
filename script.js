@@ -1,5 +1,8 @@
 document.getElementById('addFlightButton').addEventListener('click', addFlightStrip);
 
+// Load existing flight strips from local storage when the page is loaded
+window.addEventListener('load', loadStrips);
+
 // Function to display the current time
 function updateTime() {
     const now = new Date();
@@ -28,6 +31,7 @@ function addFlightStrip() {
     removeButton.innerText = 'Trash';
     removeButton.addEventListener('click', () => {
         stripsContainer.removeChild(stripDiv);
+        saveStrips(); // Save the updated strips to local storage
     });
 
     // Append elements to the strip
@@ -40,6 +44,58 @@ function addFlightStrip() {
 
     // Add the aircraft name to the next flights container
     addNextFlight(aircraftNameInput);
+
+    // Save the updated strips to local storage
+    saveStrips();
+}
+
+// Function to save strips to local storage
+function saveStrips() {
+    const stripsContainer = document.getElementById('stripsContainer');
+    const strips = Array.from(stripsContainer.children).map(strip => {
+        const inputs = strip.getElementsByTagName('input');
+        return {
+            aircraftName: inputs[0].value,
+            departureTime: inputs[1].value
+        };
+    });
+    localStorage.setItem('flightStrips', JSON.stringify(strips));
+}
+
+// Function to load strips from local storage
+function loadStrips() {
+    const stripsData = JSON.parse(localStorage.getItem('flightStrips')) || [];
+    stripsData.forEach(data => {
+        const stripsContainer = document.getElementById('stripsContainer');
+        
+        const stripDiv = document.createElement('div');
+        stripDiv.className = 'strip';
+
+        const aircraftNameInput = document.createElement('input');
+        aircraftNameInput.placeholder = 'Aircraft Name';
+        aircraftNameInput.value = data.aircraftName;
+
+        const departureTimeInput = document.createElement('input');
+        departureTimeInput.placeholder = 'Time of Departure';
+        departureTimeInput.value = data.departureTime;
+
+        const removeButton = document.createElement('button');
+        removeButton.className = 'remove-button';
+        removeButton.innerText = 'Trash';
+        removeButton.addEventListener('click', () => {
+            stripsContainer.removeChild(stripDiv);
+            saveStrips(); // Save the updated strips to local storage
+        });
+
+        stripDiv.appendChild(aircraftNameInput);
+        stripDiv.appendChild(departureTimeInput);
+        stripDiv.appendChild(removeButton);
+        
+        stripsContainer.appendChild(stripDiv);
+        
+        // Add the aircraft name to the next flights container
+        addNextFlight(aircraftNameInput);
+    });
 }
 
 // Function to add the next flight to the list
