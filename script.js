@@ -1,7 +1,10 @@
 document.getElementById('addFlightButton').addEventListener('click', addFlightStrip);
 
 // Load existing flight strips from local storage when the page is loaded
-window.addEventListener('load', loadStrips);
+window.addEventListener('load', () => {
+    loadStrips();
+    fetchMETAR(); // Fetch QNH when the page loads
+});
 
 // Function to display the current time
 function updateTime() {
@@ -125,6 +128,26 @@ function addNextFlight(input) {
     input.addEventListener('input', () => {
         flightElement.textContent = input.value || 'Unnamed Flight';
     });
+}
+
+// Function to fetch the QNH value from the METAR
+async function fetchMETAR() {
+    try {
+        const response = await fetch('https://www.aviatorjoe.net/go/wx/LIMC/');
+        const text = await response.text();
+        
+        // Parse the response text to find the QNH
+        const metarMatch = text.match(/A(\d{4})|Q(\d{4})/); // Matches A or Q format
+        
+        if (metarMatch) {
+            const qnhValue = metarMatch[1] ? metarMatch[1] : metarMatch[2]; // Get the value
+            document.getElementById('qnhValue').textContent = `${qnhValue} hPa`; // Update QNH display
+        } else {
+            console.log('QNH not found.');
+        }
+    } catch (error) {
+        console.error('Error fetching METAR data:', error);
+    }
 }
 
 // Update the time every second
