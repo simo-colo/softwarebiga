@@ -5,6 +5,48 @@ body {
     padding: 20px;
 }
 
+.top-bar {
+    display: flex;
+    align-items: center;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.logo {
+    height: 50px; /* Adjust as needed */
+    margin-right: 20px;
+}
+
+.info {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+}
+
+.qnh, .rwy {
+    margin-right: 20px;
+}
+
+.next-flights {
+    width: 200px;
+}
+
+.next-flights h3 {
+    margin: 0;
+}
+
+.next-flights div {
+    background: white;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    max-height: 150px;
+    overflow-y: auto;
+}
+
 .container {
     max-width: 600px;
     margin: auto;
