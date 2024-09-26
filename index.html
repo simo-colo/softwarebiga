@@ -7,6 +7,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="top-bar">
+        <img src="logo.png" alt="Logo" class="logo"> <!-- Placeholder for logo -->
+        <div class="info">
+            <div class="qnh">
+                <label for="qnh">QNH:</label>
+                <input type="text" id="qnh" placeholder="Enter QNH">
+            </div>
+            <div class="rwy">
+                <label for="rwy">RWY:</label>
+                <select id="rwy">
+                    <option value="35">35</option>
+                    <option value="17">17</option>
+                </select>
+            </div>
+            <div class="time" id="timeDisplay">00:00:00</div>
+        </div>
+        <div class="next-flights">
+            <h3>Next Flights</h3>
+            <div id="nextFlightsContainer"></div>
+        </div>
+    </div>
+
     <div class="container">
         <h1>Air Traffic Control</h1>
         <button id="addFlightButton">Add Flight</button>
